@@ -1,7 +1,10 @@
 from fastapi import FastAPI, Query , Request
 from difflib import get_close_matches
 from fastapi.middleware.cors import CORSMiddleware
-from .routers.root import rootRouter
+from .routers.rootRouter import rootRouter
+
+import pymysql 
+
 
 app = FastAPI()
 
@@ -12,6 +15,11 @@ app.add_middleware(
     allow_methods=["GET"],
     allow_headers=["*"],
 )
+
+
+
+
+
 
 
 import subprocess
