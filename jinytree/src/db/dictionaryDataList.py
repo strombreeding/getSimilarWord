@@ -2,7 +2,7 @@
 import json
 
 # 각 알파벳 파일에서 단어들을 읽어와 리스트에 저장
-word_dict = []  # 알파벳을 키로, 해당 알파벳의 단어 리스트를 값으로 가지는 사전
+word_dict = {}  # 알파벳을 키로, 해당 알파벳의 단어 리스트를 값으로 가지는 사전
 
 for letter in range(ord('a'), ord('z')+1):
     letter_word_list = []
@@ -14,4 +14,11 @@ for letter in range(ord('a'), ord('z')+1):
             letter_word_list.append(word)
     
     # word_dict = letter_word_list
-    word_dict = [*word_dict,*letter_word_list]
+    word_dict[chr(letter)] = letter_word_list
+
+# JSON 파일에 저장
+data = {
+    "word": word_dict
+}
+with open('dictionary.json', 'w') as json_file:
+    json.dump(data, json_file, indent=4)  # JSON 파일에 저장하며 들여쓰기 적용
