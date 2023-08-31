@@ -48,4 +48,4 @@ print("requirements.txt 파일이 업데이트되었습니다.")
 app.include_router(rootRouter, prefix="")
 
 
-# print(generate_random_words())
+print(generate_random_words())

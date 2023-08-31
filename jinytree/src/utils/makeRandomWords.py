@@ -1,7 +1,6 @@
 import json
 import random
 
-# s.json 파일 읽기
 def generate_random_words():
     with open('dictionary.json', 'r') as json_file:
         data = json.load(json_file)
@@ -17,6 +16,6 @@ def generate_random_words():
     # 무작위로 50개 단어 추출
     random_words = random.sample(all_words, 50)
 
-    # 결과 출력
-    result = ", ".join(random_words)
+    # 단어들을 ,로 연결하여 리턴
+    result = ",".join(random_words)
     return result
