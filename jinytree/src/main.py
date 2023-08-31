@@ -2,7 +2,7 @@ from fastapi import FastAPI, Query , Request
 from difflib import get_close_matches
 from fastapi.middleware.cors import CORSMiddleware
 from .routers.rootRouter import rootRouter
-
+from .utils.makeRandomWords import generate_random_words
 
 
 app = FastAPI()
@@ -47,3 +47,5 @@ print("requirements.txt 파일이 업데이트되었습니다.")
 
 app.include_router(rootRouter, prefix="")
 
+
+# print(generate_random_words())

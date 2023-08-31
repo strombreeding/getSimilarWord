@@ -8,6 +8,7 @@ class RootService:
         n = 3;
         cutoff = 0.8
         candidates = DictionaryDb.findByFirstWord(first_word)
+        word = word.replace(" ", "")
         maches_data = list(set(get_close_matches(word, candidates, n, cutoff)))
         if len(maches_data) != 0:
             words = maches_data
