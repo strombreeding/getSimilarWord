@@ -17,11 +17,12 @@ async def read_root():
 
 @rootRouter.get("/getSimliarWord")
 def get_similar_words(
-
     wordList:str = Query(..., description="Input word for similarity comparison"),
 ):
     start_time = time.time()
     wordList = wordList.split(",")
+    if wordList[0] == wordList[0].upper():
+        return "대문자 또는 한글을 빼주세요."
     result = {}
     for i in range(0, len(wordList)):
         first_word = wordList[i][0]
