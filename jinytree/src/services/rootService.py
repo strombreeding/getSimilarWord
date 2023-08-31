@@ -8,9 +8,8 @@ class RootService:
         n = 3;
         cutoff = 0.8
         candidates = DictionaryDb.findByFirstWord(first_word)
-        
-        maches_data = get_close_matches(word, candidates, n, cutoff)
-
+        maches_data = list(set(get_close_matches(word, candidates, n, cutoff)))
+        maches_data.remove(word)
         return  maches_data
     
 
