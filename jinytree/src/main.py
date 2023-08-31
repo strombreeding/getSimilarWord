@@ -3,7 +3,6 @@ from difflib import get_close_matches
 from fastapi.middleware.cors import CORSMiddleware
 from .routers.rootRouter import rootRouter
 
-import pymysql 
 
 
 app = FastAPI()
