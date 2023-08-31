@@ -2,6 +2,7 @@ from fastapi import  APIRouter, Query
 from ..services.rootService import RootService
 import time
 import os
+import re
 from fastapi.responses import HTMLResponse
 
 
@@ -14,6 +15,12 @@ async def read_root():
     return "goto /getSimliarWord?wordList=hell"
 
 
+def has_uppercase(text):
+    pattern = r'[A-Zㄱ-힣]+'
+    match = re.search(pattern, text)
+    return bool(match)
+
+
 
 @rootRouter.get("/getSimliarWord")
 def get_similar_words(
@@ -21,8 +28,9 @@ def get_similar_words(
 ):
     start_time = time.time()
     wordList = wordList.split(",")
-    if wordList[0] == wordList[0].upper():
-        return "대문자 또는 한글을 빼주세요."
+    for word in wordList:
+        if has_uppercase(word):
+            return "대문자 또는 한글이 포함되어있습니다."
     result = {}
     for i in range(0, len(wordList)):
         first_word = wordList[i][0]
