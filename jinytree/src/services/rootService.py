@@ -6,7 +6,7 @@ class RootService:
     @classmethod
     def matchDatas(cls,word,first_word):
         n = 3;
-        cutoff = 0.8
+        cutoff = 0.55
         candidates = DictionaryDb.findByFirstWord(first_word)
         word = word.replace(" ", "")
         maches_data = list(set(get_close_matches(word, candidates, n, cutoff)))
@@ -15,6 +15,7 @@ class RootService:
             for item in words:
                 if item == word:
                     maches_data.remove(word)
+        
         return  maches_data
     
 
