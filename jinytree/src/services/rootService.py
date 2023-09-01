@@ -15,7 +15,8 @@ class RootService:
             for item in words:
                 if item == word:
                     maches_data.remove(word)
-        
+        if len(maches_data) == 3:
+            maches_data.pop(0)
         return  maches_data
     
 
